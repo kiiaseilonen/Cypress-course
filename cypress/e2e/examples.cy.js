@@ -15,7 +15,7 @@ describe('Various examples', () => {
         cy.getDataTest('nav-forms').click();
         cy.location("pathname").should("equal", "/forms")
 
-        cy.getDataTest('nav-examples').click();
+        cy.getDataTest('nav-examples').click()
         cy.location("pathname").should("equal", "/examples")
         
         cy.getDataTest('nav-component').click();
@@ -23,5 +23,12 @@ describe('Various examples', () => {
 
         cy.getDataTest('nav-best-practices').click();
         cy.location("pathname").should("equal", "/best-practices")
+    })
+
+    it.only('intercepts', () => {
+        cy.intercept("POST", 'http://localhost:3000/examples', {
+            fixture: 'example.json'
+        })
+        cy.getDataTest('post-button').click();
     })
 })
