@@ -15,7 +15,7 @@ describe('Various examples', () => {
         cy.getDataTest('nav-forms').click();
         cy.location("pathname").should("equal", "/forms")
 
-        cy.getDataTest('nav-examples').click()
+        cy.getDataTest('nav-examples').click();
         cy.location("pathname").should("equal", "/examples")
         
         cy.getDataTest('nav-component').click();
@@ -32,7 +32,7 @@ describe('Various examples', () => {
         cy.getDataTest('post-button').click();
     })
 
-    it.only('grudges', () => {
+    it('grudges', () => {
 
         cy.getDataTest('grudge-list').within(() => {
             cy.get('li').should('have.length', 0)
@@ -52,7 +52,6 @@ describe('Various examples', () => {
         })
 
         cy.getDataTest('grudge-list-title').should('have.text', 'Grudges')
-
 
         cy.getDataTest('grudge-input').within(() => {
             cy.get('input').type('Second grudge on the list')
